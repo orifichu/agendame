@@ -54,15 +54,123 @@
       <!-- Begin page content -->
       <div class="container">
         <div class="row">
+
           <div class="col-md-3">
             <div class="datepicker"></div>
           </div>
-          <div class="col-md-4">
-            <p class="subtitle">Polycom 1<br />(Nueva Sede)</p>
+
+          <div class="col-md-9">
+
+              <div class="row">
+                
+                <div class="col-md-6">
+                  <p class="subtitle">Nueva Sede</p>
+                  <p>Disponibilidad de Polycom:</p>
+                  <table class="table table-bordered table-condensed table-hover">
+                    <thead>
+                      <tr>
+                        <th>Hora</th>
+                        <th>P 1</th>
+                        <th>P 2</th>
+                        <th>P 3</th>
+                        <th>P 4</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">8:00 - 8:30</th>
+                        <td class="active">Libre</td>
+                        <td class="danger">Ocupado</td>
+                        <td class="active">Libre</td>
+                        <td class="active">Libre</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">8:30 - 9:00</th>
+                        <td class="active">Libre</td>
+                        <td class="active">Libre</td>
+                        <td class="active">Libre</td>
+                        <td class="active">Libre</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">9:00 - 9:30</th>
+                        <td class="danger">Ocupado</td>
+                        <td class="danger">Ocupado</td>
+                        <td class="danger">Ocupado</td>
+                        <td class="active">Libre</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">9:30 - 10:00</th>
+                        <td class="danger">Ocupado</td>
+                        <td class="danger">Ocupado</td>
+                        <td class="danger">Ocupado</td>
+                        <td class="danger">Ocupado</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">10:00 - 10:30</th>
+                        <td class="danger">Ocupado</td>
+                        <td class="active">Libre</td>
+                        <td class="active">Libre</td>
+                        <td class="active">Libre</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-md-6">
+                  <p class="subtitle">Penal de Chiclayo</p>
+                  <p>Disponibilidad de Polycom:</p>
+                  <table class="table table-bordered table-condensed">
+                    <thead>
+                      <tr>
+                        <th>Hora</th>
+                        <th>P 1</th>
+                        <th>P 2</th>
+                        <th>P 3</th>
+                        <th>P 4</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">8:00 - 8:30</th>
+                        <td class="active">Libre</td>
+                        <td class="danger">Ocupado</td>
+                        <td class="active">Libre</td>
+                        <td class="active">Libre</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">8:30 - 9:00</th>
+                        <td class="active">Libre</td>
+                        <td class="active">Libre</td>
+                        <td class="active">Libre</td>
+                        <td class="active">Libre</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">9:00 - 9:30</th>
+                        <td class="danger">Ocupado</td>
+                        <td class="danger">Ocupado</td>
+                        <td class="danger">Ocupado</td>
+                        <td class="active">Libre</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">9:30 - 10:00</th>
+                        <td class="danger">Ocupado</td>
+                        <td class="danger">Ocupado</td>
+                        <td class="danger">Ocupado</td>
+                        <td class="danger">Ocupado</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">10:00 - 10:30</th>
+                        <td class="danger">Ocupado</td>
+                        <td class="active">Libre</td>
+                        <td class="active">Libre</td>
+                        <td class="active">Libre</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            
           </div>
-          <div class="col-md-4">
-            <p class="subtitle">Polycom 1<br />(Penal de Chiclayo)</p>
-          </div>
+
         </div>
       </div>
 
