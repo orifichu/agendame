@@ -66,18 +66,13 @@
 
       <!-- Begin page content -->
       <div class="container">
-        <div class="row text-center">
-          <div class="col-md-12">
-            <h1>Agéndame</h1>
-          </div>
-        </div>
+        <!-- Example row of columns -->
         <div class="row text-center">
           <div class="col-md-4 col-md-push-4">
+            <h1>Agéndame</h1>
             <p class="subtitle">Pertenezco a:</p>
             <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button">Corte de Lambayeque</a></p>
             <p><a class="btn btn-default btn-lg btn-block" href="#" role="button">Otra Corte</a></p>
-            <hr/>
-            <p><a class="btn btn-default btn-lg btn-block" href="agenda.php" role="button">Ver Agenda</a></p>
           </div>
         </div>
       </div>
@@ -85,7 +80,12 @@
       <div id="push"></div>
     </div>
 
-    <?php include("footer.php"); ?>
+    <footer>
+      <div class="container">
+        <hr/>
+        <p>&copy; Corte Superior de Justicia de Lambayeque <?php echo date('Y'); ?></p>
+      </div>
+    </footer>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
