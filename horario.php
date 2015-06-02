@@ -57,7 +57,6 @@
 
           <div class="col-md-3">
             <div class="datepicker"></div>
-            <a class="btn btn-primary" href="data.php" role="button">Siguiente &raquo;</a>
           </div>
 
           <div class="col-md-9">
@@ -77,44 +76,29 @@
                   </tr>
                 </thead>
                 <tbody>
+
+                  <?php for ($i=8; $i < 17; $i++) : ?>
                   <tr>
-                    <th scope="row" class="active">08:00 - 08:30</th>
+                    <th scope="row" class="active"><?php echo $i;?>:00 - <?php echo $i;?>:30</th>
                     <td class="">Libre</td>
                     <td class="danger">Ocupado</td>
                     <td class="">Libre</td>
                     <td class="">Libre</td>
                   </tr>
                   <tr>
-                    <th scope="row" class="active">08:30 - 09:00</th>
+                    <th scope="row" class="active"><?php echo $i;?>:30 - <?php echo $i+1;?>:00</th>
                     <td class="">Libre</td>
-                    <td class="">Libre</td>
+                    <td class="danger">Ocupado</td>
                     <td class="">Libre</td>
                     <td class="">Libre</td>
                   </tr>
-                  <tr>
-                    <th scope="row" class="active">09:00 - 09:30</th>
-                    <td class="danger">Ocupado</td>
-                    <td class="danger">Ocupado</td>
-                    <td class="danger">Ocupado</td>
-                    <td class="">Libre</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="active">09:30 - 10:00</th>
-                    <td class="danger">Ocupado</td>
-                    <td class="danger">Ocupado</td>
-                    <td class="danger">Ocupado</td>
-                    <td class="danger">Ocupado</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="active">10:00 - 10:30</th>
-                    <td class="danger">Ocupado</td>
-                    <td class="">Libre</td>
-                    <td class="">Libre</td>
-                    <td class="">Libre</td>
-                  </tr>
+                  <?php endfor; ?>
+                  
                 </tbody>
               </table>
             </div>
+            <p class="text-right"><a class="btn btn-primary" href="data.php" role="button">Siguiente &raquo;</a></p>
+          
           </div>
 
         </div>
