@@ -83,8 +83,10 @@ if ($solicita!='casa' && $solicita!='visitante') {
               <div class="col-md-12">
                 <h3>Corte de Lambayeque</h3>
                 <div class="checkbox">
-                  <label><input type="checkbox" value="0">Sede Principal (Nueva Sede)</label><br/>
-                  <label><input type="checkbox" value="1">Penal de Chiclayo</label>
+                  <?php if($solicita!='casa'): ?>
+                  <label><input type="checkbox" value="csj.lambayeque">Sede Principal (Nueva Sede)</label><br/>
+                  <?php endif; ?>
+                  <label><input type="checkbox" value="csj.lambayeque.penal">Penal de Chiclayo</label>
                 </div>
 
                 <?php if($solicita=='casa'): ?>
