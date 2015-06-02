@@ -39,6 +39,14 @@ $( document ).ready(function() {
 			href = href + ',csj.lambayeque';
 		};
 
+		//fecha de hoy
+		var d = new Date();
+		var month = d.getMonth()+1;
+		var day = d.getDate();
+		var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day;
+
+		href = href + '&fecha='+output;
+
 		$(this).attr("href", href);
 	});
 });

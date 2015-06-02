@@ -75,3 +75,8 @@ div.agenda .table-bordered > thead > tr > th.sede-title {
   background-color: #3276b1;
   /*border-color: #285e8e;*/
 }
+
+div.agenda .table > tbody > tr > th {
+  width: 150px;
+  text-align: center;
+}
