@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Agéndame</title>
+        <title>Predata | Agéndame</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -23,11 +23,11 @@
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
-    <body class="home">
+    <body class="predata">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-    <!--nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -36,48 +36,52 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Agéndame</a>
+          <a class="navbar-brand" href="index.php">Agéndame</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
-        </div--><!--/.navbar-collapse -->
-      <!--/div>
-    </nav-->
-
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <!--div class="jumbotron">
-      <div class="container">
-        <h1>Agéndame</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="agenda.php">Agenda</a></li>
+          </ul>
+        </div>
       </div>
-    </div-->
+    </nav>
 
     <!-- Part 1: Wrap all page content here -->
     <div id="wrap">
 
       <!-- Begin page content -->
       <div class="container">
-        <div class="row text-center">
-          <div class="col-md-12">
-            <h1>Agéndame</h1>
+        <div class="row">
+          <div class="col-md-6 col-md-push-3">
+            <h2>¿Su sala posee un equipo Polycom?</h2>
+            <div class="radio">
+              <label><input type="radio" value="0">No</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <label><input type="radio" value="1">Sí</label>
+            </div>
           </div>
         </div>
-        <div class="row text-center">
-          <div class="col-md-4 col-md-push-4">
-            <p class="subtitle">Pertenezco a:</p>
-            <p><a class="btn btn-primary btn-lg btn-block" href="predata.php?solicita=casa" role="button">Corte de Lambayeque</a></p>
-            <p><a class="btn btn-default btn-lg btn-block" href="predata.php?solicita=visitante" role="button">Otra Corte</a></p>
-            <hr/>
-            <p><a class="btn btn-default btn-lg btn-block" href="agenda.php" role="button">Ver Agenda</a></p>
+        <div class="row">
+          <div class="col-md-6 col-md-push-3">
+            <h2>¿Con qué lugar(es) desea conectarse?</h2>
+            <div class="row">
+              <div class="col-md-6 col-md-push-1">
+                <h3>Corte de Lambayeque</h3>
+                <div class="checkbox">
+                  <label><input type="checkbox" value="0">Sede Principal</label><br/>
+                  <label><input type="checkbox" value="1">Penal de Chiclayo</label>
+                </div>
+
+                <h3>Otras Cortes</h3>
+                <div class="checkbox">
+                  <label><input type="checkbox" value="0">Corte de Tumbes</label><br/>
+                  <label><input type="checkbox" value="1">Corte de Lima</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <p><a class="btn btn-primary btn-lg" href="horario.php" role="button">Siguiente&raquo;</a></p>
+            </div>
           </div>
         </div>
       </div>
