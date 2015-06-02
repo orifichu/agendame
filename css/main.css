@@ -71,4 +71,7 @@ div.agenda .table-bordered, div.agenda .table-bordered > thead > tr > th.hora {
 
 div.agenda .table-bordered > thead > tr > th.sede-title {
   border-top: 1px solid #ddd;
+  color: #ffffff;
+  background-color: #3276b1;
+  /*border-color: #285e8e;*/
 }
