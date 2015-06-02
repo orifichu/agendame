@@ -33,6 +33,12 @@ $( document ).ready(function() {
 			return false;
 		};
 
-		$(this).attr("href", "horario.php?solicita="+solicita+"&tp="+tp+"&lugar="+lugar);
+		var href = "horario.php?solicita="+solicita+"&tp="+tp+"&lugar="+lugar;
+
+		if (solicita=='casa' && tp==0) {
+			href = href + ',csj.lambayeque';
+		};
+
+		$(this).attr("href", href);
 	});
 });
