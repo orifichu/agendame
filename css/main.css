@@ -62,7 +62,7 @@
 }
 
 div.agenda {
-  padding-top: 40px;
+  margin-top: 40px;
 }
 
 div.agenda .table-bordered, div.agenda .table-bordered > thead > tr > th.hora {

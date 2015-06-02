@@ -53,68 +53,68 @@
 
       <!-- Begin page content -->
       <div class="container">
-        <div class="row">
+        <div class="row ">
 
           <div class="col-md-3">
             <div class="datepicker"></div>
-            <div class="row">
-              <p><a class="btn btn-primary btn-lg" href="data.php" role="button">Siguiente&raquo;</a></p>
-            </div>
+            <a class="btn btn-primary" href="data.php" role="button">Siguiente &raquo;</a>
           </div>
 
-          <div class="agenda col-md-9 table-responsive">
-            <table class="table table-bordered table-hover table-condensed">
-              <thead>
-                <tr>
-                  <th rowspan="2" class="hora text-center" style="vertical-align:middle;"></th>
-                  <th class="sede-title" colspan="2">Nueva Sede</th>
-                  <th class="sede-title" colspan="2">Penal</th>
-                </tr>
-                <tr>
-                  <th>P 1</th>
-                  <th>P 2</th>
-                  <th>P 1</th>
-                  <th>P 2</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">8:00 - 8:30</th>
-                  <td class="active">Libre</td>
-                  <td class="danger">Ocupado</td>
-                  <td class="active">Libre</td>
-                  <td class="active">Libre</td>
-                </tr>
-                <tr>
-                  <th scope="row">8:30 - 9:00</th>
-                  <td class="active">Libre</td>
-                  <td class="active">Libre</td>
-                  <td class="active">Libre</td>
-                  <td class="active">Libre</td>
-                </tr>
-                <tr>
-                  <th scope="row">9:00 - 9:30</th>
-                  <td class="danger">Ocupado</td>
-                  <td class="danger">Ocupado</td>
-                  <td class="danger">Ocupado</td>
-                  <td class="active">Libre</td>
-                </tr>
-                <tr>
-                  <th scope="row">9:30 - 10:00</th>
-                  <td class="danger">Ocupado</td>
-                  <td class="danger">Ocupado</td>
-                  <td class="danger">Ocupado</td>
-                  <td class="danger">Ocupado</td>
-                </tr>
-                <tr>
-                  <th scope="row">10:00 - 10:30</th>
-                  <td class="danger">Ocupado</td>
-                  <td class="active">Libre</td>
-                  <td class="active">Libre</td>
-                  <td class="active">Libre</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="col-md-9">
+            <div class="agenda table-responsive">
+              <table class="table table-bordered table-hover table-condensed text-center">
+                <thead>
+                  <tr>
+                    <th rowspan="2" class="hora text-center" style="vertical-align:middle;">&nbsp;</th>
+                    <th class="sede-title text-uppercase text-center" colspan="2">Nueva Sede</th>
+                    <th class="sede-title text-uppercase text-center" colspan="2">Penal</th>
+                  </tr>
+                  <tr class="active">
+                    <th class="text-center active">P 1</th>
+                    <th class="text-center active">P 2</th>
+                    <th class="text-center active">P 1</th>
+                    <th class="text-center active">P 2</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row" class="active">08:00 - 08:30</th>
+                    <td class="">Libre</td>
+                    <td class="danger">Ocupado</td>
+                    <td class="">Libre</td>
+                    <td class="">Libre</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="active">08:30 - 09:00</th>
+                    <td class="">Libre</td>
+                    <td class="">Libre</td>
+                    <td class="">Libre</td>
+                    <td class="">Libre</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="active">09:00 - 09:30</th>
+                    <td class="danger">Ocupado</td>
+                    <td class="danger">Ocupado</td>
+                    <td class="danger">Ocupado</td>
+                    <td class="">Libre</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="active">09:30 - 10:00</th>
+                    <td class="danger">Ocupado</td>
+                    <td class="danger">Ocupado</td>
+                    <td class="danger">Ocupado</td>
+                    <td class="danger">Ocupado</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="active">10:00 - 10:30</th>
+                    <td class="danger">Ocupado</td>
+                    <td class="">Libre</td>
+                    <td class="">Libre</td>
+                    <td class="">Libre</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
         </div>

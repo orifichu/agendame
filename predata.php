@@ -66,21 +66,21 @@ if ($solicita!='casa' && $solicita!='visitante') {
         
         <?php if($solicita=='casa'): ?>
         <div class="row">
-          <div class="col-md-6 col-md-push-3">
+          <div class="col-md-12">
             <h2>¿Su sala posee un equipo Polycom?</h2>
             <div class="radio">
-              <label><input name="tp" type="radio" value="0">No</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <label><input name="tp" type="radio" value="1">Sí</label>
+              <label><input name="tp" type="radio" value="1">Sí</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <label><input name="tp" type="radio" value="0">No</label>
             </div>
           </div>
         </div>
         <?php endif; ?>
         
         <div class="row">
-          <div class="col-md-6 col-md-push-3">
+          <div class="col-md-12">
             <h2>¿Con qué lugar(es) desea conectarse?</h2>
             <div class="row">
-              <div class="col-md-6 col-md-push-1">
+              <div class="col-md-12">
                 <h3>Corte de Lambayeque</h3>
                 <div class="checkbox">
                   <label><input type="checkbox" value="0">Sede Principal (Nueva Sede)</label><br/>
@@ -91,44 +91,49 @@ if ($solicita!='casa' && $solicita!='visitante') {
                 <h3>Otras Cortes</h3>
                 <div class="checkbox">
                   <label><input type="checkbox" value="csj.amazonas">Corte de Amazonas</label><br/>
-                  <label><input type="checkbox" value="csj.ancash">Corte de Ancash</label>
-                  <label><input type="checkbox" value="csj.apurimac">Corte de Apurimac</label>
-                  <label><input type="checkbox" value="csj.arequipa">Corte de Arequipa</label>
-                  <label><input type="checkbox" value="csj.ayacucho">Corte de Ayacucho</label>
-                  <label><input type="checkbox" value="csj.cajamarca">Corte de Cajamarca</label>
-                  <label><input type="checkbox" value="csj.callao">Corte de Callao</label>
-                  <label><input type="checkbox" value="csj.canete">Corte de Cañete</label>
-                  <label><input type="checkbox" value="csj.cusco">Corte de Cusco</label>
-                  <label><input type="checkbox" value="csj.huancavelica">Corte de Huancavelica</label>
-                  <label><input type="checkbox" value="csj.huanuco">Corte de Huanuco</label>
-                  <label><input type="checkbox" value="csj.huarua">Corte de Huarua</label>
-                  <label><input type="checkbox" value="csj.ica">Corte de Ica</label>
-                  <label><input type="checkbox" value="csj.junin">Corte de Junin</label>
-                  <label><input type="checkbox" value="csj.la.libertad">Corte de La Libertad</label>
-                  <label><input type="checkbox" value="csj.lima">Corte de Lima</label>
-                  <label><input type="checkbox" value="csj.lima.este">Corte de Lima Este</label>
-                  <label><input type="checkbox" value="csj.lima.norte">Corte de Lima Norte</label>
-                  <label><input type="checkbox" value="csj.lima.sur">Corte de Lima Sur</label>
-                  <label><input type="checkbox" value="csj.loreto">Corte de Loreto</label>
-                  <label><input type="checkbox" value="csj.madre.de.dios">Corte de Madre de Dios</label>
-                  <label><input type="checkbox" value="csj.moquegua">Corte de Moquegua</label>
-                  <label><input type="checkbox" value="csj.pasco">Corte de Pasco</label>
-                  <label><input type="checkbox" value="csj.piura">Corte de Piura</label>
-                  <label><input type="checkbox" value="csj.puno">Corte de Puno</label>
-                  <label><input type="checkbox" value="csj.san.martin">Corte de San Martín</label>
-                  <label><input type="checkbox" value="csj.santa">Corte de Santa</label>
-                  <label><input type="checkbox" value="csj.sullana">Corte de Sullana</label>
-                  <label><input type="checkbox" value="csj.tacna">Corte de Tacna</label>
-                  <label><input type="checkbox" value="csj.tumbes">Corte de Tumbes</label>
-                  <label><input type="checkbox" value="csj.ucayali">Corte de Ucayali</label>
-                  <label><input type="checkbox" value="csj.ventanilla">Corte de Ventanilla</label>
+                  <label><input type="checkbox" value="csj.ancash">Corte de Ancash</label><br/>
+                  <label><input type="checkbox" value="csj.apurimac">Corte de Apurimac</label><br/>
+                  <label><input type="checkbox" value="csj.arequipa">Corte de Arequipa</label><br/>
+                  <label><input type="checkbox" value="csj.ayacucho">Corte de Ayacucho</label><br/>
+                  <label><input type="checkbox" value="csj.cajamarca">Corte de Cajamarca</label><br/>
+                  <label><input type="checkbox" value="csj.callao">Corte de Callao</label><br/>
+                  <label><input type="checkbox" value="csj.canete">Corte de Cañete</label><br/>
+                  <label><input type="checkbox" value="csj.cusco">Corte de Cusco</label><br/>
+                  <label><input type="checkbox" value="csj.huancavelica">Corte de Huancavelica</label><br/>
+                  <label><input type="checkbox" value="csj.huanuco">Corte de Huanuco</label><br/>
+                  <label><input type="checkbox" value="csj.huarua">Corte de Huarua</label><br/>
+                  <label><input type="checkbox" value="csj.ica">Corte de Ica</label><br/>
+                  <label><input type="checkbox" value="csj.junin">Corte de Junin</label><br/>
+                  <label><input type="checkbox" value="csj.la.libertad">Corte de La Libertad</label><br/>
+                  <label><input type="checkbox" value="csj.lima">Corte de Lima</label><br/>
+                  <label><input type="checkbox" value="csj.lima.este">Corte de Lima Este</label><br/>
+                  <label><input type="checkbox" value="csj.lima.norte">Corte de Lima Norte</label><br/>
+                  <label><input type="checkbox" value="csj.lima.sur">Corte de Lima Sur</label><br/>
+                  <label><input type="checkbox" value="csj.loreto">Corte de Loreto</label><br/>
+                  <label><input type="checkbox" value="csj.madre.de.dios">Corte de Madre de Dios</label><br/>
+                  <label><input type="checkbox" value="csj.moquegua">Corte de Moquegua</label><br/>
+                  <label><input type="checkbox" value="csj.pasco">Corte de Pasco</label><br/>
+                  <label><input type="checkbox" value="csj.piura">Corte de Piura</label><br/>
+                  <label><input type="checkbox" value="csj.puno">Corte de Puno</label><br/>
+                  <label><input type="checkbox" value="csj.san.martin">Corte de San Martín</label><br/>
+                  <label><input type="checkbox" value="csj.santa">Corte de Santa</label><br/>
+                  <label><input type="checkbox" value="csj.sullana">Corte de Sullana</label><br/>
+                  <label><input type="checkbox" value="csj.tacna">Corte de Tacna</label><br/>
+                  <label><input type="checkbox" value="csj.tumbes">Corte de Tumbes</label><br/>
+                  <label><input type="checkbox" value="csj.ucayali">Corte de Ucayali</label><br/>
+                  <label><input type="checkbox" value="csj.ventanilla">Corte de Ventanilla</label><br/>
+                  <br/>
                 </div>
                 <?php endif; ?>
               </div>
             </div>
-            <div class="row">
-              <p><a class="btn btn-primary btn-lg" href="#" id="btn-next" role="button">Siguiente&raquo;</a></p>
-            </div>
+            
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+              <p><a class="btn btn-primary" href="#" id="btn-next" role="button">Siguiente &raquo;</a></p>
           </div>
         </div>
       </div>
