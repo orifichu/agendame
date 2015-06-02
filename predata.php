@@ -53,7 +53,7 @@
       <!-- Begin page content -->
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-6 col-md-push-3">
             <h2>¿Su sala posee un equipo Polycom?</h2>
             <div class="radio">
               <label><input type="radio" value="0">No</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -62,10 +62,10 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-6 col-md-push-3">
             <h2>¿Con qué lugar(es) desea conectarse?</h2>
             <div class="row">
-              <div class="col-md-12 col-md-push-1">
+              <div class="col-md-6 col-md-push-1">
                 <h3>Corte de Lambayeque</h3>
                 <div class="checkbox">
                   <label><input type="checkbox" value="0">Sede Principal</label><br/>
@@ -79,13 +79,9 @@
                 </div>
               </div>
             </div>
-            
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <br>
-            <p><a class="btn btn-primary " href="horario.php" role="button">Siguiente &raquo;</a></p>
+            <div class="row">
+              <p><a class="btn btn-primary btn-lg" href="horario.php" role="button">Siguiente&raquo;</a></p>
+            </div>
           </div>
         </div>
       </div>
