@@ -1,3 +1,10 @@
+<?php include("variables_get.php"); ?>
+<?php include("funciones.php"); ?>
+<?php
+$variables_get['includerFile'] = __FILE__;
+ScopedInclude('check_get.php', $variables_get);
+?>
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="es"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="es"> <![endif]-->

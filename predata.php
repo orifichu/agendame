@@ -1,10 +1,8 @@
+<?php include("variables_get.php"); ?>
+<?php include("funciones.php"); ?>
 <?php
-$solicita = $_GET['solicita'];
-
-//solo se permite el ingreso de dos posibles valores para la variable $solicita
-if ($solicita!='casa' && $solicita!='visitante') {
-  header('Location: index.php');
-}
+$variables_get['includerFile'] = __FILE__;
+ScopedInclude('check_get.php', $variables_get);
 ?>
 
 <!doctype html>
