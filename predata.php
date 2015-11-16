@@ -3,6 +3,15 @@
 <?php
 $variables_get['includerFile'] = __FILE__;
 ScopedInclude('check_get.php', $variables_get);
+
+//enlace a la base de datos
+$db_link = get_db_link();
+
+//consulta sedes de csj.lambayeque (id=1)
+$sql = '
+SELECT * FROM sedes WHERE sede_padre_id= 1 ORDER BY nombre
+';
+$resultado = mysqli_query( $db_link, $sql );
 ?>
 
 <!doctype html>
@@ -62,7 +71,7 @@ ScopedInclude('check_get.php', $variables_get);
       <!-- Begin page content -->
       <div class="container">
         
-        <?php if($solicita=='casa'): ?>
+        <?php /*if($solicita=='casa'): ?>
         <div class="row">
           <div class="col-md-12">
             <h2>¿Su sala posee un equipo Polycom?</h2>
@@ -70,58 +79,43 @@ ScopedInclude('check_get.php', $variables_get);
               <label><input name="tp" type="radio" value="1">Sí</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <label><input name="tp" type="radio" value="0">No</label>
             </div>
+           
           </div>
         </div>
-        <?php endif; ?>
+        <?php endif;*/ ?>
         
         <div class="row">
           <div class="col-md-12">
-            <h2>¿Con qué lugar(es) desea conectarse?</h2>
+            <h2>¿Entre qué sedes se realizará la videoconferencia?</h2>
             <div class="row">
               <div class="col-md-12">
                 <h3>Corte de Lambayeque</h3>
                 <div class="checkbox">
-                  <?php if($solicita!='casa'): ?>
-                  <label><input type="checkbox" value="csj.lambayeque">Sede Principal (Nueva Sede)</label><br/>
-                  <?php endif; ?>
-                  <label><input type="checkbox" value="csj.lambayeque.penal">Penal de Chiclayo</label>
+                  <?php
+                  while ($sede = mysqli_fetch_object($resultado)) {
+                  ?>
+                  <label><input type="checkbox" value="<?php echo $sede->codigo?>"><?php echo $sede->nombre?></label><br/>
+                  <?php
+                  }
+                  ?>
                 </div>
 
-                <?php if($solicita=='casa'): ?>
+                <?php if($solicita=='casa'):
+                //consulta sedes de csj.lambayeque (id=1)
+                $sql = '
+                SELECT * FROM sedes WHERE sede_padre_id= 0 AND sede_id!=1 ORDER BY nombre
+                ';
+                $resultado = mysqli_query( $db_link, $sql );
+                ?>
                 <h3>Otras Cortes</h3>
                 <div class="checkbox">
-                  <label><input type="checkbox" value="csj.amazonas">Corte de Amazonas</label><br/>
-                  <label><input type="checkbox" value="csj.ancash">Corte de Ancash</label><br/>
-                  <label><input type="checkbox" value="csj.apurimac">Corte de Apurimac</label><br/>
-                  <label><input type="checkbox" value="csj.arequipa">Corte de Arequipa</label><br/>
-                  <label><input type="checkbox" value="csj.ayacucho">Corte de Ayacucho</label><br/>
-                  <label><input type="checkbox" value="csj.cajamarca">Corte de Cajamarca</label><br/>
-                  <label><input type="checkbox" value="csj.callao">Corte de Callao</label><br/>
-                  <label><input type="checkbox" value="csj.canete">Corte de Cañete</label><br/>
-                  <label><input type="checkbox" value="csj.cusco">Corte de Cusco</label><br/>
-                  <label><input type="checkbox" value="csj.huancavelica">Corte de Huancavelica</label><br/>
-                  <label><input type="checkbox" value="csj.huanuco">Corte de Huanuco</label><br/>
-                  <label><input type="checkbox" value="csj.huarua">Corte de Huarua</label><br/>
-                  <label><input type="checkbox" value="csj.ica">Corte de Ica</label><br/>
-                  <label><input type="checkbox" value="csj.junin">Corte de Junin</label><br/>
-                  <label><input type="checkbox" value="csj.la.libertad">Corte de La Libertad</label><br/>
-                  <label><input type="checkbox" value="csj.lima">Corte de Lima</label><br/>
-                  <label><input type="checkbox" value="csj.lima.este">Corte de Lima Este</label><br/>
-                  <label><input type="checkbox" value="csj.lima.norte">Corte de Lima Norte</label><br/>
-                  <label><input type="checkbox" value="csj.lima.sur">Corte de Lima Sur</label><br/>
-                  <label><input type="checkbox" value="csj.loreto">Corte de Loreto</label><br/>
-                  <label><input type="checkbox" value="csj.madre.de.dios">Corte de Madre de Dios</label><br/>
-                  <label><input type="checkbox" value="csj.moquegua">Corte de Moquegua</label><br/>
-                  <label><input type="checkbox" value="csj.pasco">Corte de Pasco</label><br/>
-                  <label><input type="checkbox" value="csj.piura">Corte de Piura</label><br/>
-                  <label><input type="checkbox" value="csj.puno">Corte de Puno</label><br/>
-                  <label><input type="checkbox" value="csj.san.martin">Corte de San Martín</label><br/>
-                  <label><input type="checkbox" value="csj.santa">Corte de Santa</label><br/>
-                  <label><input type="checkbox" value="csj.sullana">Corte de Sullana</label><br/>
-                  <label><input type="checkbox" value="csj.tacna">Corte de Tacna</label><br/>
-                  <label><input type="checkbox" value="csj.tumbes">Corte de Tumbes</label><br/>
-                  <label><input type="checkbox" value="csj.ucayali">Corte de Ucayali</label><br/>
-                  <label><input type="checkbox" value="csj.ventanilla">Corte de Ventanilla</label><br/>
+                <?php
+                while ($sede = mysqli_fetch_object($resultado)) {
+                ?>
+                <label><input type="checkbox" value="<?php echo $sede->codigo?>"><?php echo $sede->nombre?></label><br/>
+                <?php
+                }
+                ?>
                   <br/>
                 </div>
                 <?php endif; ?>

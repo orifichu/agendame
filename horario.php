@@ -3,6 +3,9 @@
 <?php
 $variables_get['includerFile'] = __FILE__;
 ScopedInclude('check_get.php', $variables_get);
+
+//enlace a la base de datos
+$db_link = get_db_link();
 ?>
 
 <!doctype html>
@@ -58,6 +61,11 @@ ScopedInclude('check_get.php', $variables_get);
     <!-- Part 1: Wrap all page content here -->
     <div id="wrap">
 
+      <input id="solicita" type="hidden" value="<?php echo $solicita; ?>" />
+      <input id="tp" type="hidden" value="<?php echo $tp; ?>" />
+      <input id="lugar" type="hidden" value="<?php echo $lugar; ?>" />
+      <input id="fecha" type="hidden" value="<?php echo $fecha; ?>" />
+
       <!-- Begin page content -->
       <div class="container">
         <div class="row ">
@@ -68,6 +76,7 @@ ScopedInclude('check_get.php', $variables_get);
 
           <div class="col-md-9">
             <div class="agenda table-responsive">
+              <?php /* ejemplo de tabla
               <table class="table table-bordered table-hover table-condensed text-center">
                 <thead>
                   <tr>
@@ -90,123 +99,74 @@ ScopedInclude('check_get.php', $variables_get);
                     <td class="">Libre</td>
                     <td class="">Libre</td>
                   </tr>
+                </tbody>
+              </table>
+              */ ?>
+
+              <?php
+              //consulta videoconferencias del día
+              $sql = "
+              SELECT COUNT(videoconferencia_id) cantidad, hora FROM videoconferencias WHERE fecha = '%s'
+              GROUP BY hora
+              ORDER BY hora
+              ";
+              $sql = sprintf($sql, $fecha);
+              $resultado = mysqli_query( $db_link, $sql );
+
+              //recuerda que agregar una hora aquí es agregar una hora en check_get.php y agenda.php
+              $cantidad_x_hora = array(
+                  '07:30' => 0,
+                  '08:00' => 0,
+                  '08:30' => 0,
+                  '09:00' => 0,
+                  '09:30' => 0,
+                  '10:00' => 0,
+                  '10:30' => 0,
+                  '11:00' => 0,
+                  '11:30' => 0,
+                  '12:00' => 0,
+                  '12:30' => 0,
+                  '13:00' => 0,
+                  '13:30' => 0,
+                  '14:00' => 0,
+                  '14:30' => 0,
+                  '15:00' => 0,
+                  '15:30' => 0,
+                  '16:00' => 0,
+                  '16:30' => 0,
+                  '17:00' => 0,
+                  '17:30' => 0,
+                  '18:00' => 0,
+                  '18:30' => 0
+                );
+              while ($fila = mysqli_fetch_object($resultado)) {
+                $cantidad_x_hora[$fila->hora] = $fila->cantidad;
+              }
+              ?>
+              <table class="table table-bordered table-hover table-condensed text-center">
+                <thead>
                   <tr>
-                    <th scope="row" class="active">08:30 - 09:00</th>
-                    <td class="">Libre</td>
-                    <td class="danger">Ocupado</td>
-                    <td class="">Libre</td>
-                    <td class="">Libre</td>
+                    <th class="hora text-center" style="vertical-align:middle;">&nbsp;</th>
+                    <th class="sede-title text-uppercase text-center">Videoconferencias</th>
                   </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  foreach ($cantidad_x_hora as $hora => $cantidad) {
+                  ?>
                   <tr>
-                    <th scope="row" class="active">09:00 - 09:30</th>
-                    <td class="">Libre</td>
-                    <td class="danger">Ocupado</td>
-                    <td class="">Libre</td>
-                    <td class="">Libre</td>
+                    <th scope="row" class="active">
+                      <label><input name="hora" type="radio" value="<?php echo $hora ?>">&nbsp;<?php echo $hora ?></label>
+                    </th>
+                    <td class=""><a href="agenda.php?fecha=<?php echo $fecha.'#'.$hora; ?>" target="_blank"><?php echo $cantidad ?></a></td>
                   </tr>
-                  <tr>
-                    <th scope="row" class="active">09:30 - 10:00</th>
-                    <td class="">Libre</td>
-                    <td class="danger">Ocupado</td>
-                    <td class="">Libre</td>
-                    <td class="">Libre</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="active">10:00 - 10:30</th>
-                    <td class="">Libre</td>
-                    <td class="danger">Ocupado</td>
-                    <td class="">Libre</td>
-                    <td class="">Libre</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="active">10:30 - 11:00</th>
-                    <td class="">Libre</td>
-                    <td class="danger">Ocupado</td>
-                    <td class="">Libre</td>
-                    <td class="">Libre</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="active">11:00 - 11:30</th>
-                    <td class="">Libre</td>
-                    <td class="danger">Ocupado</td>
-                    <td class="">Libre</td>
-                    <td class="">Libre</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="active">11:30 - 12:00</th>
-                    <td class="">Libre</td>
-                    <td class="danger">Ocupado</td>
-                    <td class="">Libre</td>
-                    <td class="">Libre</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="active">12:00 - 12:30</th>
-                    <td class="">Libre</td>
-                    <td class="danger">Ocupado</td>
-                    <td class="">Libre</td>
-                    <td class="">Libre</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="active">12:30 - 13:00</th>
-                    <td class="">Libre</td>
-                    <td class="danger">Ocupado</td>
-                    <td class="">Libre</td>
-                    <td class="">Libre</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="active">13:00 - 13:30</th>
-                    <td class="">Libre</td>
-                    <td class="danger">Ocupado</td>
-                    <td class="">Libre</td>
-                    <td class="">Libre</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="active">13:30 - 14:00</th>
-                    <td class="">Libre</td>
-                    <td class="danger">Ocupado</td>
-                    <td class="">Libre</td>
-                    <td class="">Libre</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="active">14:00 - 14:30</th>
-                    <td class="">Libre</td>
-                    <td class="danger">Ocupado</td>
-                    <td class="">Libre</td>
-                    <td class="">Libre</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="active">14:30 - 15:00</th>
-                    <td class="">Libre</td>
-                    <td class="danger">Ocupado</td>
-                    <td class="">Libre</td>
-                    <td class="">Libre</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="active">15:00 - 15:30</th>
-                    <td class="">Libre</td>
-                    <td class="danger">Ocupado</td>
-                    <td class="">Libre</td>
-                    <td class="">Libre</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="active">15:30 - 16:00</th>
-                    <td class="">Libre</td>
-                    <td class="danger">Ocupado</td>
-                    <td class="">Libre</td>
-                    <td class="">Libre</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="active">16:00 - 16:30</th>
-                    <td class="">Libre</td>
-                    <td class="danger">Ocupado</td>
-                    <td class="">Libre</td>
-                    <td class="">Libre</td>
-                  </tr>
+                  <?php
+                  }
+                  ?>
                 </tbody>
               </table>
             </div>
-            <p class="text-right"><a class="btn btn-primary" href="data.php" role="button">Siguiente &raquo;</a></p>
-          
+            <p class="text-right"><a class="btn btn-primary" href="#" id="btn-next" role="button">Siguiente &raquo;</a></p>
           </div>
 
         </div>

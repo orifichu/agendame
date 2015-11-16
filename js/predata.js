@@ -8,7 +8,9 @@ $( document ).ready(function() {
 		var solicita = $('input[id=solicita]').val();
 
 		//tp: tiene polycom
-		var tp = $('input[name=tp]:checked').val();
+		var tp = 0;
+		//la sección está comentada pues se dará por supuesto que no hay equipo polycom disponible
+		/*var tp = $('input[name=tp]:checked').val();
 
 		if (solicita=='casa') {
 			if (tp!=0 && tp!=1) {
@@ -17,7 +19,7 @@ $( document ).ready(function() {
 			};
 		} else {
 			tp = 0;
-		};
+		};*/
 		
 		var lugar = '';
 		var lugar_array = [];
@@ -29,15 +31,23 @@ $( document ).ready(function() {
 		lugar = lugar_array.join(',');
 
 		if (lugar=='') {
-			alert("Responda la pregunta: ¿Con qué lugar(es) desea conectarse?");
+			alert("Responda la pregunta: ¿Entre qué sedes se realizará la videoconferencia?");
 			return false;
 		};
 
-		var href = "horario.php?solicita="+solicita+"&tp="+tp+"&lugar="+lugar;
-
-		if (solicita=='casa' && tp==0) {
-			href = href + ',csj.lambayeque';
+		if (solicita=='casa') {
+			if (lugar_array.length <= 1 ) {
+				alert("Necesita un mínimo de dos sedes para realizar una videoconferencia");
+				return false;
+			};
+		} else {
+			if (lugar_array.length <= 0 ) {
+				alert("Necesita un mínimo de una sede con quién realizar la videoconferencia");
+				return false;
+			};
 		};
+		
+		var href = "horario.php?solicita="+solicita+"&tp="+tp+"&lugar="+lugar;
 
 		//fecha de hoy
 		var d = new Date();

@@ -1,3 +1,25 @@
+<?php include("funciones.php"); ?>
+<?php
+$id = $_GET['id'];
+
+//enlace a la base de datos
+$db_link = get_db_link();
+
+$sql = "
+SELECT fecha_hora_insert FROM videoconferencias ORDER BY videoconferencia_id = %d;
+";
+$sql = sprintf($sql, $id);
+$resultado = do_query( $db_link, $sql );
+
+while ($videoconferencia = mysqli_fetch_object($resultado)) {
+  $fecha_hora_insert = $videoconferencia->fecha_hora_insert;
+}
+
+$fecha_hora_insert_exploded = explode(' ', $fecha_hora_insert);
+$fecha = $fecha_hora_insert_exploded[0];
+$hora  = $fecha_hora_insert_exploded[1];
+?>
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="es"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="es"> <![endif]-->
@@ -27,39 +49,6 @@
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-    <!--nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Agéndame</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
-        </div--><!--/.navbar-collapse -->
-      <!--/div>
-    </nav-->
-
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <!--div class="jumbotron">
-      <div class="container">
-        <h1>Agéndame</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-      </div>
-    </div-->
 
     <!-- Part 1: Wrap all page content here -->
     <div id="wrap">
@@ -74,7 +63,7 @@
         <div class="row text-center">
           <div class="col-md-4 col-md-push-4">
             <p class="subtitle">Constancia</p>
-            <p>El código de su videoconferencia es: XXX y ha sido registrada con fecha XXX a horas YYY.</p>
+            <p>El código de su videoconferencia es: <b><?php echo $id; ?></b> y ha sido registrada con fecha <b><?php echo $fecha; ?></b> a horas <b><?php echo $hora; ?></b>.</p>
             <p>No olvide imprimir está hoja a manera de hacer constar que su vidoconferencia ha sido correctamente registrada.</p>
             <hr/>
             <p><a class="btn btn-default btn-lg btn-block" href="index.php" role="button">Volver al Inicio</a></p>

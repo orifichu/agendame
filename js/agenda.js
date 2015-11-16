@@ -15,29 +15,63 @@ function getUrlParameter(sParam)
 $( document ).ready(function() {
 	// Handler for .ready() called.
 
-	$( "#btn-next" ).on( "click", function() {
+	$( "a.delete" ).on( "click", function() {
 		//para evitar errores ponemos esta línea que evitará la redirección
 		$(this).attr("href", "#");
 
-		var solicita = $('input[id=solicita]').val();
-		var tp = $('input[id=tp]').val();
-		var lugar = $('input[id=lugar]').val();
+		if (confirm("¿Desea eliminar la videoconferencia?")) {
+			
+		} else {
+			return false;
+		};
+
+		var id = $(this).attr("id");
 		var fecha = $('input[id=fecha]').val();
 
-		var href = "data.php?solicita="+solicita+"&tp="+tp+"&lugar="+lugar+"&fecha="+fecha;
-
-		//hora seleccionada
-		var hora = $('input[name=hora]:checked').val();
-
-		if ($('input[name=hora]:checked').length) {
-        } else {
-			alert("¿A qué hora se llevará a cabo la videoconferencia?");
-			return false;
-		}
-		
-		href = href + '&hora='+hora;
+		var href = "videoconferencia_delete.php?id="+id+"&fecha="+fecha;
 
 		$(this).attr("href", href);
+	});
+
+	$( "a.quick_edit" ).on( "click", function() {
+		//para evitar errores ponemos esta línea que evitará la redirección
+		$(this).attr("href", "#");
+
+		var id = $(this).attr("name");
+
+		//$( "div#" + id ).removeClass( "hide" )
+		$( "div#" + id ).show( "slow", function() {
+		    // Animation complete.
+		});
+	});
+
+	$( "a.cancel" ).on( "click", function() {
+		//para evitar errores ponemos esta línea que evitará la redirección
+		$(this).attr("href", "#");
+
+		var id = $(this).attr("id");
+
+		$( "div#" + id ).hide( 1000 );
+	});
+
+	$(document).on('submit','form.data',function(e){
+		//si hay archivo entonces que solo sean pdf
+		var oficio = $(this).find('#oficio').val(); 
+        if(oficio!='') 
+        { 
+            var extension = oficio.substr( (oficio.lastIndexOf('.') +1) );
+            extension = extension.toLowerCase();
+		    switch(extension) {
+		        case 'pdf':
+		            break;
+		        default:
+		            alert('Solo se admiten archivos PDF');
+		            return false;
+		    }
+        }
+
+		//si todo está bien entonces submit
+		
 	});
 
 	$('div.datepicker').datepicker({
@@ -70,7 +104,7 @@ $( document ).ready(function() {
 		var new_date = year+"-"+month+"-"+day;
 
 		if ( new_date != getUrlParameter('fecha') ) {
-			window.location.replace('horario.php?solicita='+getUrlParameter('solicita')+'&tp='+getUrlParameter('tp')+'&lugar='+getUrlParameter('lugar')+'&fecha='+new_date);
+			window.location.replace('agenda.php?fecha='+new_date);
 		};
 
 		//alert(getUrlParameter('fecha'));

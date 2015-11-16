@@ -1,3 +1,13 @@
+<?php include("variables_get.php"); ?>
+<?php include("funciones.php"); ?>
+<?php
+$variables_get['includerFile'] = __FILE__;
+ScopedInclude('check_get.php', $variables_get);
+
+//enlace a la base de datos
+$db_link = get_db_link();
+?>
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="es"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="es"> <![endif]-->
@@ -54,32 +64,57 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-md-push-3">
-            <form action="constancia.php">
+            <br/>
+            <form action="videoconferencia_save.php" enctype="multipart/form-data" id="data" name="data" method="post">
+              <input id="videoconferencia_id" name="videoconferencia_id" type="hidden" value="0" />
+
+              <input id="solicita" name="solicita" type="hidden" value="<?php echo $solicita; ?>" />
+              <input id="tp" name="tp" type="hidden" value="<?php echo $tp; ?>" />
+              <input id="lugar" name="lugar" type="hidden" value="<?php echo $lugar; ?>" />
+              <input id="fecha" name="fecha" type="hidden" value="<?php echo $fecha; ?>" />
+              <input id="hora" name="hora" type="hidden" value="<?php echo $hora; ?>" />
+
               <div class="form-group">
-                <label for="juzgado">¿Cual es su Juzgado?</label>
-                <select class="form-control" id="juzgado">
-                  <option value="1jip">1er Juzgado de Investigación Preparatoria</option>
-                  <option value="2jip">2do Juzgado de Investigación Preparatoria</option>
-                  <option value="3jip">3er Juzgado de Investigación Preparatoria</option>
-                  <option value="4jip">4to Juzgado de Investigación Preparatoria</option>
-                  <option value="1jup">1er Juzgado Penal Unipersonal</option>
-                  <option value="2jup">2do Juzgado Penal Unipersonal</option>
-                  <option value="3jup">3er Juzgado Penal Unipersonal</option>
-                  <option value="4jup">4to Juzgado Penal Unipersonal</option>
-                  <option value="5jup">5to Juzgado Penal Unipersonal</option>
-                  <option value="6jup">6to Juzgado Penal Unipersonal</option>
-                  <option value="7jup">7mo Juzgado Penal Unipersonal</option>
-                  <option value="jpcp">Juzgado Penal Colegiado Permanente</option>
-                  <option value="jpct">Juzgado Penal Colegiado Transitorio</option>
-                  <option value="1spa">1ra Sala Penal de Apelaciones</option>
-                  <option value="2spa">2do Sala Penal de Apelaciones</option>
-                </select>
+                <label for="solicitante">¿Cual es la dependencia solicitante?</label>
+                <div class="row">
+                  <div class="col-md-8">
+                    <input type="text" class="form-control" id="solicitante" name="solicitante">
+                  </div>
+                  <div class="col-md-4">
+                    <select class="form-control" id="sede_id_solicitante" name="sede_id_solicitante">
+                      <?php
+                      if ($solicita=='casa') {
+                      ?>
+                      <option value="1">CSJ Lambayeque</option>
+                      <?php
+                      } else {
+                        //consulta videoconferencias del día
+                        $sql = '
+                        SELECT * FROM sedes WHERE sede_padre_id= 0 AND sede_id!=1 ORDER BY nombre
+                        ';
+                        $resultado = mysqli_query( $db_link, $sql );
+
+                        while ($sede = mysqli_fetch_object($resultado)) {
+                        ?>
+                        <option value="<?php echo $sede->sede_id; ?>"><?php echo $sede->nombre; ?></option>
+                        <?php
+                        }
+                      }
+                      ?>
+                    </select>
+                  </div>
+                </div>
+                
               </div>
               <div class="form-group">
-                <label for="exampleInputPassword1">¿Cual es el número del expediente?</label>
-                <input type="text" class="form-control" id="expediente">
+                <label for="nro_expediente">¿Cual es el número del expediente?</label>
+                <div class="row">
+                  <div class="col-md-8">
+                    <input type="text" class="form-control" id="nro_expediente" name="nro_expediente">
+                  </div>
+                </div>
               </div>
-              <div class="form-group">
+              <!--div class="form-group">
                 <label for="participante">¿Quién se presentará a la videoconferencia?</label>
                 <div class="row">
                   <div class="col-md-9">
@@ -95,16 +130,16 @@
                     </select>
                   </div>
                 </div>
-              </div>
+              </div-->
               <div class="form-group">
                 <label for="oficio">¿Puede adjuntar el oficio?</label>
                 <p>Si bien es cierto no es necesario adjuntar el oficio nunca está de más brindar información adicional.</p>
-                <input type="file" id="oficio">
+                <input id="oficio" name="oficio" type="file">
               </div>
               <div class="form-group">
                 <label for="detalles">¿Algún dato más?</label>
                 <p>Ingrese aquí cualquier otro dato adicional sobre la videoconferencia. Las direcciones, nombres, números y anexos; siempre son de gran ayuda para establecer una mejor coordinación.</p>
-                <textarea class="form-control" rows="5" id="detalles"></textarea>
+                <textarea class="form-control" rows="5" id="detalles" name="detalles"></textarea>
               </div>
               <button type="submit" class="btn btn-default">Grabar</button>
             </form>
@@ -124,6 +159,6 @@
         <script src="js/vendor/bootstrap.min.js"></script>
 
         <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/data.js"></script>
     </body>
 </html>

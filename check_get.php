@@ -25,7 +25,9 @@ function check_lugar( $solicita, $tp, $lugar, $fecha ){
 	$lugares = array_unique($lugares);
 
 	$cortes = array(
-		'csj.lambayeque',
+		'csj.lambayeque.nueva.sede',
+		'csj.lambayeque.jaen',
+		'csj.lambayeque.cutervo',
 		'csj.lambayeque.penal',
 		'csj.amazonas',
 		'csj.ancash',
@@ -69,13 +71,51 @@ function check_lugar( $solicita, $tp, $lugar, $fecha ){
 }
 
 //solo se permite una fecha válida
-function check_fecha( $solicita, $tp, $lugar, $fecha ){
+function check_fecha( $solicita, $tp, $lugar, $fecha, $is_agenda = false ){
 	$format = 'Y-m-d';
 	$d = DateTime::createFromFormat($format, $fecha);
     if ( $d && $d->format($format) == $fecha ) {
 		
 	} else {
 		$fecha = gmdate("Y-m-d", time() + 3600*(-5+date("I")));;
+
+		if ($is_agenda) :
+			header('Location: agenda.php?fecha='.$fecha);
+		else:
+			header('Location: horario.php?solicita='.$solicita.'&tp='.$tp.'&lugar='.$lugar.'&fecha='.$fecha);
+		endif;
+	}
+}
+
+//solo se permiten las horas ya definidas
+function check_hora( $solicita, $tp, $lugar, $fecha, $hora ){
+	$horas = array(
+                  '07:30',
+                  '08:00',
+                  '08:30',
+                  '09:00',
+                  '09:30',
+                  '10:00',
+                  '10:30',
+                  '11:00',
+                  '11:30',
+                  '12:00',
+                  '12:30',
+                  '13:00',
+                  '13:30',
+                  '14:00',
+                  '14:30',
+                  '15:00',
+                  '15:30',
+                  '16:00',
+                  '16:30',
+                  '17:00',
+                  '17:30',
+                  '18:00',
+                  '18:30'
+                );
+
+	if ( ! in_array($hora, $horas) ) {
 		header('Location: horario.php?solicita='.$solicita.'&tp='.$tp.'&lugar='.$lugar.'&fecha='.$fecha);
 	}
 }
@@ -93,6 +133,18 @@ switch ( $filename ) {
 		check_tp( $solicita, $tp, $lugar, $fecha );
 		check_lugar( $solicita, $tp, $lugar, $fecha );
 		check_fecha( $solicita, $tp, $lugar, $fecha );
+		break;
+
+	case 'data':
+		check_solicita($solicita, $tp, $lugar, $fecha);
+		check_tp( $solicita, $tp, $lugar, $fecha );
+		check_lugar( $solicita, $tp, $lugar, $fecha );
+		check_fecha( $solicita, $tp, $lugar, $fecha );
+		check_hora( $solicita, $tp, $lugar, $fecha, $hora );
+		break;
+
+	case 'agenda':
+		check_fecha( $solicita, $tp, $lugar, $fecha, true );
 		break;
 }
 
